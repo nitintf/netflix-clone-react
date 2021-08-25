@@ -1,0 +1,44 @@
+import { lazy, Suspense } from "react";
+import { Route, Switch } from "react-router";
+
+import Header from "../components/browse/header";
+import * as ROUTES from "../constants/routes";
+import Footer from "../components/footer";
+
+const Home = lazy(() => import("./home"));
+const Movies = lazy(() => import("./movies"));
+const TvShows = lazy(() => import("./tvshows"));
+const Detail = lazy(() => import("./detail"));
+const MyList = lazy(() => import("./myList"));
+
+const Browse = () => {
+  return (
+    <>
+      <main className="browse">
+        <Header />
+        <Suspense
+          fallback={
+            <div
+              style={{
+                backgroundColor: "black",
+                width: "100vw",
+                height: "100vh",
+              }}
+            ></div>
+          }
+        >
+          <Switch>
+            <Route path={ROUTES.BROWSE} component={Home} exact />
+            <Route path={ROUTES.MOVIES} component={Movies} exact />
+            <Route path={ROUTES.TV_SHOWS} component={TvShows} exact />
+            <Route path={ROUTES.DETAIL} component={Detail} />
+            <Route path={ROUTES.MY_LIST} component={MyList} />
+          </Switch>
+        </Suspense>
+      </main>
+      <Footer bgColor="#141414" />
+    </>
+  );
+};
+
+export default Browse;

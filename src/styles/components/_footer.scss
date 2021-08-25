@@ -1,0 +1,47 @@
+.footer {
+  background-color: $color-black;
+  color: rgb(126, 122, 122);
+  padding: 5rem 0 3rem 0;
+
+  &__title {
+    margin-bottom: 2rem;
+  }
+
+  &__container {
+    width: 70%;
+    height: 100%;
+    margin: 0 auto;
+  }
+
+  &__links {
+    display: flex;
+    gap: 10rem;
+
+    @include media('<tablet') {
+      gap: 7rem;
+    }
+    @include media('<phone') {
+      gap: 4rem;
+    }
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    
+
+    & > span {
+      font-size: .9rem;
+      cursor: pointer;
+      user-select: none;
+      line-height: 1.2;
+    }
+  }
+
+  &__location {
+    font-size: .8rem;
+  }
+}

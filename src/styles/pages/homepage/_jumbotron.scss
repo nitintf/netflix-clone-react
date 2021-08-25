@@ -1,0 +1,71 @@
+.jumbotron {
+
+  &__container {
+    display: flex;
+    max-width: 1100px;
+    margin: 0 auto;
+    align-items: center;
+    justify-content: space-between;
+
+    @include media('<tablet') {
+      justify-content: center;
+    }
+  
+    &--text {
+      @include media('<tablet') {
+        text-align: center;
+      }
+    }
+
+   
+
+    &--subtitle {
+      font-size: 1.65rem;
+      font-weight: 400;
+      line-height: 1.2;
+      width: 90%;
+      @include media('<tablet') {
+         font-size: 1.25rem;
+       }
+    }
+
+    &--img {
+      width: 90%;
+      height: 100%;
+      display: flex;
+      flex: 0 1 auto;
+
+      @include media('<tablet') {
+      justify-content: center;
+    }
+    }
+
+    &--image {
+      max-width: 100%;
+      height: auto;
+      border: 0;
+
+       
+    }
+
+
+  }
+
+  .row {
+  flex-direction: row;
+
+  @include media('<tablet') {
+    flex-direction: column;
+  }
+}
+
+.row-reverse {
+  flex-direction: row-reverse;
+  @include media('<tablet') {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+}
+

@@ -1,0 +1,95 @@
+.form {
+  background-color: rgba(0, 0, 0, 0.63);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  color: $color-white;
+  padding: 3rem;
+  gap: 2rem;
+  max-width: 400px;
+  min-width: 380px;
+  
+
+  &__heading {
+    font-size: 2rem;
+  }
+
+  &__input {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+
+    &--container {
+      position: relative;
+    }
+
+    &--field {
+      min-width: 100%;
+      background-color: #333;
+      outline: none;
+      border: none;
+      color: $color-white;
+       padding: 16px 20px 0;
+      border-radius: 5px;
+      height: 50px;
+      line-height: 50px;
+      font-size: 1rem;
+    }
+
+    &--label {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: rgb(180, 177, 177);
+      font-size: 1rem;
+      left: 16px;
+      transition:  .1s ease-in-out;
+
+      &-up {
+        transform: translateY(-150%);
+        font-size: 11px;
+      }
+      }
+  }
+
+  &__actions {
+
+    &--submit {
+      width: 100%;
+      outline: none;
+      border: none;
+      font-family: $font-family;
+      font-size: 1.1rem;
+      background: $color-main;
+      color: $color-white;
+      padding: .9rem 7.5rem;
+      border-radius: 5px;
+      display: block;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &-disabled {
+        cursor: not-allowed;
+      }
+    }
+
+    &--links {
+      margin-top: 1.5rem;
+      color: #666;
+      font-size: 14px;
+
+      &-link {
+        color: $color-white;
+        font-size: 1rem;
+      }
+    }
+
+    
+  }
+}

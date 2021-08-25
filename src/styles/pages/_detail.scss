@@ -1,0 +1,138 @@
+.info {
+  width: 100%;
+  background-color: #141414;
+  min-height: 80vh;
+  position: relative;
+
+  &__banner {
+    width:100%;
+    min-height: 80vh;
+    max-height: 80vh;
+    position: relative;
+    background-color: #141414;
+
+    &--detail {
+      position: absolute;
+      top: 40%;
+      left: 3.5%;
+      width: 70%;
+      color: $color-white;
+
+      &-title {
+        font-size: 4rem;
+        line-height: 1.1;
+        margin-bottom: 2rem;
+      }
+
+      &-actions {
+        display: flex;
+        gap: 1rem;
+        align-items: c;
+      }
+    }
+
+    &--poster {
+      position: relative;
+      width: 100%;
+
+       &::after{
+        content: '';
+        width: 100%;
+        height: 5rem;
+        position: absolute;
+        bottom: 0;
+        z-index: 4;
+        left: 0rem;
+        right: 0;
+        background-image:  linear-gradient(to top,#141414 2%,rgba(56, 56, 56, 0));
+      }
+      
+
+      &-bgimg {
+        width: 100%;
+        max-height: 75vh;
+        opacity: 50%;
+        object-fit: cover;
+      }
+
+    }
+  }
+
+// ------------------- ABOUT ------------------------------
+
+
+  &__about {
+    width: 100%;
+    min-height: fit-content;
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    color: $color-white;
+    position: relative;
+
+
+    &--left {
+      width: 60%;
+    }
+    &--right {
+      width: 30%;
+      font-weight: 500;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      line-height: 1.5;
+
+      &-key {
+        font-size: 13px;
+        color: #888;
+        display: inline;
+      }
+      &-value {
+        display: inline;
+
+        &:after {
+          content: ', ';
+        }
+
+        &:nth-last-child(1) {
+        
+          &:after {
+            content: '';
+          }
+        }
+      }
+    }
+    &--small {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 2rem;
+      font-weight: 600;
+
+      &-rating {
+        color: #46d369;
+      }
+
+      &-adult {
+         border: 1px solid rgba(255,255,255,.5);
+         padding: 3px 10px;
+      }
+
+      &-print {
+        font-size: 12px;
+        border: 1px solid rgba(255,255,255,.5);
+        border-radius: 3px;
+        padding: 2px;
+      }
+    }
+
+    &--overview {
+      line-height: 1.4;
+      font-size: 1rem;
+      font-weight: 500;
+    }
+  }
+
+
+ 
+}

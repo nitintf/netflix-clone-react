@@ -1,0 +1,14 @@
+.mylist {
+  width: 100%;
+  min-height: 40rem;
+  background-color: #141414;
+  position: relative;
+  padding: 8rem 3rem;
+  color: $color-white;
+  
+
+  &__heading {
+    border-left: 3px solid red;
+    padding-left: 1rem;
+  }
+}

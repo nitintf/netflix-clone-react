@@ -1,0 +1,88 @@
+.homepage {
+  background-color: $color-white;
+  &__header {
+   
+    &--head {
+      padding: 2rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    
+    &--logo {
+      fill: $color-main;
+      width: 8rem;
+    }
+
+    &--signin {
+      background-color: $color-main;
+      padding: .5rem 1rem;
+      border-radius: 4px;
+      color: $color-white;
+      font-family: inherit;
+    }
+
+   
+
+    &--text {
+      width: 100%;
+      height: 85%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      color: $color-white;
+      gap: 1rem;
+      text-align: center;
+
+      &-title {
+        width: 40%;
+
+        @include media('<tablet') {
+          width: 50%;
+        }
+
+        @include media('<phone') {
+          width: 70%;
+        }
+      }
+
+      &-subtitle {
+        font-weight: 400;
+      }
+
+      &-para {
+        font-weight: 600;
+      }
+
+      &-btn {
+        background: $color-main;
+        padding: 1rem 2rem;
+        font-size: 1.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  
+  }
+
+  &__title {
+      font-size: 3.125rem;
+      margin-bottom: 1rem;
+      line-height: 1.1;
+
+      @include media('<tablet') {
+        font-size: 2.5rem;
+      }
+  }
+
+  &__card {
+    background-color: $color-black;
+    position: relative;
+    color: $color-white;
+    padding: 50px 5% ;
+    border-bottom: 8px solid #222;
+    
+  }
+}

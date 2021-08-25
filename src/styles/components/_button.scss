@@ -1,0 +1,58 @@
+.btn {
+  outline: none;
+  border: none;
+  font-family: inherit;
+  font-weight: 600;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+
+  &__round {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: transparent;
+    outline: none;
+    border: 2px solid rgba(255,255,255,.5);
+    background-color: rgba(42,42,42,.6);
+    padding: 10px;
+    cursor: pointer;
+
+    &:hover {
+      border-color: #fff;
+    }
+
+    &--icon {
+      fill:#fff;
+    }
+  }
+
+  &--icon {
+      font-size: 1.5rem;
+    }
+
+  &--trailer {
+    padding: 10px 1.5rem;
+    background-color: $color-white;
+    color: $color-black;
+
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.877);
+    }
+  }
+
+  &--info {
+    padding: 10px 1.5rem;
+    background-color: rgba(121, 120, 120, 0.404);
+    color: $color-white;
+
+    &:hover {
+      background-color:  rgba(121, 120, 120, 0.637);
+    }
+  }
+
+}
