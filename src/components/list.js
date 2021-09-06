@@ -6,7 +6,7 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { IMG_PATH } from "../constants/api"
 
 const List = ({ title, getData, poster }) => {
-  const [executed, setExecuted] = useState(false);
+  let executed = false
   const [movies, setMovies] = useState([]);
   const [show, setShow] = useState(false);
   const { ref, inView } = useInView();
@@ -15,7 +15,7 @@ const List = ({ title, getData, poster }) => {
   useEffect(() => {
     const dataRequest = async () => {
       if (inView && !executed) {
-        setExecuted(true);
+        executed = true;
         const data = await getData();
         setMovies(data);
         setInterval(() => {
@@ -26,10 +26,8 @@ const List = ({ title, getData, poster }) => {
 
     dataRequest();
 
-    return () => {
-      dataRequest()
-    };
-  }, [inView, getData, executed]);
+
+  }, [inView]);
 
   return (
     <div ref={ref} className="list">
@@ -47,9 +45,8 @@ const List = ({ title, getData, poster }) => {
       )}
 
       <div className="list__items">
-
         {show ? (
-          movies.map((movie, i) => {
+          movies?.length > 0 ? movies.map((movie, i) => {
             return i < 10 && movie.backdrop_path && movie.poster_path ? (
               <Link
                 key={movie.id}
@@ -65,7 +62,7 @@ const List = ({ title, getData, poster }) => {
                 />
               </Link>
             ) : null;
-          })
+          }) : <p className='show-message'>Sorry, We don't have any data for this!</p>
         ) : (
           <SkeletonTheme color="#222" highlightColor="#333">
             <Skeleton

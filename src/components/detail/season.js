@@ -58,12 +58,15 @@ const Season = ({ id, SeasNum }) => {
                 <h4 key={i + 1} data-season={i + 1} className='season__options--value'>Season {i + 1}</h4>
               ))}
             </div>}
-
           </div>
         )}
       </div>
       {season && <div className='season__episodes'>
-        {season.episodes.map((item, i) => item.still_path && <Episode key={i} data={item} id={id} />)}
+
+        {season.episodes.length > 0 ?
+          season.episodes.map((item, i) => item.still_path && <Episode key={i} data={item} id={id} />)
+          : <p className='show-message'> Sorry, Data for this Season is not available</p>
+        }
       </div>}
 
     </section>
