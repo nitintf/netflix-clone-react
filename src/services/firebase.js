@@ -1,5 +1,6 @@
 import { firebase, FieldValue } from "../lib/firebase";
 
+
 export const doesUsernameExists = async (username) => {
   const response = await firebase
     .firestore()
@@ -17,7 +18,6 @@ export const getUserProfiles = async (docId) => {
     .collection('profile')
     .get()
 
-  console.log(`response`, response)
 
   const userProfiles = response.docs.map((item) => {
     return { ...item.data() }
@@ -96,6 +96,14 @@ export const removeFromCurrentProfile = async (docId, profileId, data) => {
         ...data
       })
     });
+}
 
-
+export const deleteCurrentProfile = async (docId, profileId) => {
+  await firebase
+    .firestore()
+    .collection("users")
+    .doc(docId)
+    .collection('profile')
+    .doc(profileId)
+    .delete()
 }

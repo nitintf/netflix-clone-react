@@ -62,7 +62,6 @@ const Season = ({ id, SeasNum }) => {
           </div>
         )}
       </div>
-
       {season && <div className='season__episodes'>
         {season.episodes.map((item, i) => item.still_path && <Episode key={i} data={item} id={id} />)}
       </div>}

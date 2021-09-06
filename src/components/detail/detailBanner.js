@@ -1,31 +1,41 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { BsFillPlayFill } from "react-icons/bs";
 
 import { IMG_PATH } from "../../constants/api";
 import useUser from "../../hooks/use-user";
+import { MyListContext } from "../../context/myList";
 import { addToCurrentProfile, removeFromCurrentProfile } from "../../services/firebase";
 
-const DetailBanner = ({ data }) => {
+const DetailBanner = ({ data, type }) => {
   const [profile, setProfile] = useState(null)
   const [add, setAdd] = useState(false)
   const { user } = useUser()
+  const { myList, setMyList } = useContext(MyListContext)
 
   useEffect(() => {
     setProfile(JSON.parse(localStorage.getItem('userProfile')))
-  }, [])
+    if (myList?.some(item => {
+      return item.id === data.id
+    })) {
+      setAdd(true)
+    }
+  }, [myList])
 
   const handleSubmition = async () => {
     setAdd(!add)
     if (add) {
+      const newMyList = myList.filter(item => {
+        return item.id !== data.id
+      })
+      setMyList(newMyList)
       await removeFromCurrentProfile(user.docId, profile.profileId, {
-        data
+        ...data, type
       })
     } else {
-
-      const response = await addToCurrentProfile(user.docId, profile.profileId, {
-        data
+      setMyList((prev) => [...prev, { ...data, type }])
+      await addToCurrentProfile(user.docId, profile.profileId, {
+        ...data, type
       })
-      console.log(`response`, response)
     }
   }
 

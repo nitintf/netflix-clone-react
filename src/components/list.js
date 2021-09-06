@@ -3,13 +3,14 @@ import { Link } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
-import { IMG_PATH } from "../constants/api";
+import { IMG_PATH } from "../constants/api"
 
 const List = ({ title, getData, poster }) => {
   const [executed, setExecuted] = useState(false);
   const [movies, setMovies] = useState([]);
   const [show, setShow] = useState(false);
   const { ref, inView } = useInView();
+
 
   useEffect(() => {
     const dataRequest = async () => {

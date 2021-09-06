@@ -15,6 +15,10 @@ const BillBoard = ({ getData }) => {
     };
 
     getMovie();
+
+    // return () => {
+    //   // setMovie({})
+    // }
   }, []);
 
   return (

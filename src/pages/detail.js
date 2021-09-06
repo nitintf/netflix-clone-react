@@ -25,6 +25,10 @@ const Detail = () => {
     };
 
     getData();
+
+    return () => {
+      setData(null)
+    }
   }, [id, type]);
 
   return (
@@ -32,7 +36,7 @@ const Detail = () => {
       <section className="info">
         {data && (
           <>
-            <DetailBanner data={data} />
+            <DetailBanner data={data} type={type} />
             <DetailAbout data={data} type={type} />
             {type === 'tv' &&
               <>

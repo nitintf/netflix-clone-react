@@ -1,9 +1,12 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect, useContext } from "react";
 import { Route, Switch } from "react-router";
 
 import Header from "../components/browse/header";
 import * as ROUTES from "../constants/routes";
 import Footer from "../components/footer";
+import { getCurrentProfile } from "../services/firebase"
+import useUser from "../hooks/use-user"
+import { MyListContext } from "../context/myList";
 
 const Home = lazy(() => import("./home"));
 const Movies = lazy(() => import("./movies"));
@@ -12,6 +15,22 @@ const Detail = lazy(() => import("./detail"));
 const MyList = lazy(() => import("./myList"));
 
 const Browse = () => {
+  const { user } = useUser()
+  const { setMyList } = useContext(MyListContext)
+
+
+  useEffect(() => {
+    const profile = JSON.parse(localStorage.getItem('userProfile'))
+    const getProfile = async () => {
+      const response = await getCurrentProfile(user.docId, profile.profileId)
+      setMyList(response?.myList)
+    }
+
+    getProfile()
+
+
+  }, [user.docId])
+
   return (
     <>
       <main className="browse">

@@ -11,7 +11,6 @@ const CreateProfile = ({ setCreateProfile }) => {
   const history = useHistory();
 
   const { user } = useUser()
-  console.log(`user`, user)
   const handleCreateProfile = async (e) => {
     e.preventDefault();
 

@@ -1,10 +1,13 @@
-import { Route, Switch } from "react-router";
+import { Switch } from "react-router";
 import { lazy, Suspense } from "react";
 
 import * as ROUTES from "./constants/routes";
 import Loader from "./components/loader";
 import UserContext from "./context/user";
 import useAuthListener from "./hooks/use-authlistener";
+import MyListProvider from './context/myList'
+import PrivateRoute from "./helpers/private-route";
+import IsUserLoggedIn from "./helpers/is-user-logged-in";
 
 const Homepage = lazy(() => import("./pages/homepage"));
 const Login = lazy(() => import("./pages/login"));
@@ -25,11 +28,13 @@ function App() {
     >
       <Switch>
         <UserContext.Provider value={{ user }}>
-          <Route path={ROUTES.HOMEPAGE} component={Homepage} exact />
-          <Route path={ROUTES.LOGIN} component={Login} />
-          <Route path={ROUTES.SIGN_IN} component={SignIn} />
-          <Route path={ROUTES.PROFILE} component={Profile} />
-          <Route path={ROUTES.BROWSE} component={Browse} />
+          <MyListProvider>
+            <IsUserLoggedIn path={ROUTES.HOMEPAGE} component={Homepage} exact />
+            <IsUserLoggedIn path={ROUTES.LOGIN} component={Login} />
+            <IsUserLoggedIn path={ROUTES.SIGN_IN} component={SignIn} />
+            <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
+            <PrivateRoute path={ROUTES.BROWSE} component={Browse} />
+          </MyListProvider>
         </UserContext.Provider>
       </Switch>
     </Suspense>

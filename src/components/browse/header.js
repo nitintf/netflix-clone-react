@@ -1,5 +1,8 @@
-import { useEffect, useState } from "react";
-import { NavLink, Link } from "react-router-dom";
+import { useEffect, useRef, useState, useContext } from "react";
+import { NavLink, Link, useHistory } from "react-router-dom";
+import FirebaseContext from "../../context/firebase";
+import { deleteCurrentProfile } from '../../services/firebase'
+import useUser from "../../hooks/use-user";
 
 import * as ROUTES from "../../constants/routes";
 import Logo from "../../assets/logo";
@@ -7,13 +10,42 @@ import Logo from "../../assets/logo";
 const Header = () => {
   const [profile, setProfile] = useState({});
   const [showTip, setShowTip] = useState(false);
+  const history = useHistory()
+  const ref = useRef()
+  const { firebase } = useContext(FirebaseContext)
+  const { user } = useUser()
+
 
   useEffect(() => {
     if (localStorage.getItem("userProfile")) {
       const userProfile = localStorage.getItem("userProfile");
       setProfile(JSON.parse(userProfile));
     }
+
+    return () => {
+      setProfile({})
+    }
   }, []);
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setShowTip(false)
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      // Unbind the event listener on clean up
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [ref])
+
+
+  const handleDeleteProfile = async () => {
+    await deleteCurrentProfile(user.docId, profile.profileId)
+    history.push(ROUTES.PROFILE);
+  }
 
   return (
     <header className="browse__header">
@@ -54,19 +86,36 @@ const Header = () => {
         </div>
       </div>
       <div className="browse__header--actions">
-        <div className="browse__header--actions-profile">
-          <Link to={ROUTES.PROFILE}>
+        <div ref={ref} className="browse__header--actions-profile">
             <img
               className="browse__header--actions-profileimg"
               src={`/images/users/5.png`}
               alt="profile"
-              onMouseEnter={() => setShowTip(true)}
-              onMouseLeave={() => setShowTip(false)}
-            />
-          </Link>
+            onClick={() => setShowTip(!showTip)}
+          />
           {showTip && (
             <div className="browse__header--actions-tip">
-              {profile.profileName}
+              <Link to={ROUTES.PROFILE} className='browse__header--actions-tip-item'>
+                😊 {profile.profileName}
+              </Link>
+              <div
+                to={ROUTES.PROFILE}
+                onClick={handleDeleteProfile}
+                className='browse__header--actions-tip-item'
+              >
+                Delete Profile
+              </div>
+              <div
+                to={ROUTES.LOGIN}
+                onClick={() => {
+                  firebase.auth().signOut();
+                  history.push(ROUTES.LOGIN);
+                }}
+                className='browse__header--actions-tip-item'
+              >
+                Logout
+              </div>
+
             </div>
           )}
         </div>

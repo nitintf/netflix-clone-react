@@ -1,0 +1,23 @@
+import { Redirect, Route } from "react-router";
+
+const IsUserLoggedIn = ({ component: Component, ...props }) => {
+  return (
+    <Route
+      {...props}
+      render={innerProps =>
+        !localStorage.getItem("authUser") ? (
+          <Component {...innerProps} />
+        ) : (
+          <Redirect
+            to={{
+              pathname: "/browse",
+              state: { from: props.location }
+            }}
+          />
+        )
+      }
+    />
+  );
+}
+
+export default IsUserLoggedIn
