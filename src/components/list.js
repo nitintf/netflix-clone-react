@@ -34,7 +34,7 @@ const List = ({ title, getData, poster }) => {
       {show ? (
         <div className="list__title">{title}</div>
       ) : (
-        <SkeletonTheme color="#222" highlightColor="#333">
+          <SkeletonTheme color="#222" highlightColor="#333">
           <Skeleton
             count={1}
             height={25}
@@ -64,13 +64,21 @@ const List = ({ title, getData, poster }) => {
             ) : null;
           }) : <p className='show-message'>Sorry, We don't have any data for this!</p>
         ) : (
-          <SkeletonTheme color="#222" highlightColor="#333">
-            <Skeleton
-              count={4}
-              height={150}
-              width={300}
-              style={{ marginRight: "1rem" }}
-            />
+            <SkeletonTheme color="#222" highlightColor="#333">
+              {poster ?
+                <Skeleton
+                  count={5}
+                  height={300}
+                  width={230}
+                  style={{ marginRight: "1rem" }}
+                /> :
+                <Skeleton
+                  count={4}
+                  height={150}
+                  width={300}
+                  style={{ marginRight: "1rem" }}
+                />}
+
           </SkeletonTheme>
         )}
       </div>

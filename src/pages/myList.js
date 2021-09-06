@@ -42,13 +42,13 @@ const MyList = () => {
               </Link>
             )
           }
-          )) : 'Add Some Movies and Tv Shows to see them here') : <SkeletonTheme color="#222" highlightColor="#333">
+          )) : <p className='show-message'>Add Some Movies and Tv Shows to see them here</p>) : <SkeletonTheme color="#222" highlightColor="#333">
             <Skeleton
-              count={4}
-              height={150}
-              width={300}
-              style={{ marginRight: "1rem", marginTop: '1rem' }}
-            />
+                count={5}
+                height={300}
+                width={230}
+                style={{ marginRight: "1rem", marginTop: '1rem' }}
+              />
           </SkeletonTheme>}
 
         </div>

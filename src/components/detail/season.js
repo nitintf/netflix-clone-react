@@ -62,7 +62,6 @@ const Season = ({ id, SeasNum }) => {
         )}
       </div>
       {season && <div className='season__episodes'>
-
         {season.episodes.length > 0 ?
           season.episodes.map((item, i) => item.still_path && <Episode key={i} data={item} id={id} />)
           : <p className='show-message'> Sorry, Data for this Season is not available</p>
