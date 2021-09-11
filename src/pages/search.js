@@ -21,7 +21,6 @@ const Search = () => {
   }, [select])
 
   useEffect(() => {
-    console.log(`selectRef`, selectRef)
     const getData = async () => {
       const result = await getSearch(input)
       setMovies(result.results.filter(item => item.media_type === 'movie' && item.poster_path))

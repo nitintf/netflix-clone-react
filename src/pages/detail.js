@@ -46,7 +46,6 @@ const Detail = () => {
             }
             {type === 'movie' &&
               <>
-              {console.log(data)}
               {data.belongs_to_collection ?
                   <List title="Collection" getData={() => getCollection(data.belongs_to_collection.id)} poster={true} />
                   : <List title="More Like This" getData={() => getSimilarMovies(id)} poster={true} />
