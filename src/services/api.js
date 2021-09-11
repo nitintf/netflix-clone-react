@@ -189,3 +189,17 @@ export const getTvDetails = async (id) => {
 
   return data;
 };
+
+export const getSearch = async (query) => {
+  const response = await fetch(`https://api.themoviedb.org/3/search/multi?api_key=${API_KEY}&language=en-US&query=${query}&page=1&include_adult=false`)
+  const data = await response.json();
+
+  if (!response.ok) {
+    throw new Error(
+      data.message || "Could not Complete your request please try again"
+    );
+  }
+
+  return data
+
+}

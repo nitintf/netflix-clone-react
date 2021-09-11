@@ -7,3 +7,4 @@ export const TV_SHOWS = "/browse/tvshows";
 export const MY_LIST = "/browse/mylist";
 export const PROFILE = "/profile";
 export const DETAIL = "/browse/:type/:id";
+export const SEARCH = "/browse/search"

@@ -13,6 +13,7 @@ const Movies = lazy(() => import("./movies"));
 const TvShows = lazy(() => import("./tvshows"));
 const Detail = lazy(() => import("./detail"));
 const MyList = lazy(() => import("./myList"));
+const Search = lazy(() => import('./search'))
 
 const Browse = () => {
   const { user } = useUser()
@@ -52,6 +53,7 @@ const Browse = () => {
             <Route path={ROUTES.TV_SHOWS} component={TvShows} exact />
             <Route path={ROUTES.DETAIL} component={Detail} />
             <Route path={ROUTES.MY_LIST} component={MyList} />
+            <Route path={ROUTES.SEARCH} component={Search} />
           </Switch>
         </Suspense>
       </main>
