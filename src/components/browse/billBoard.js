@@ -29,7 +29,6 @@ const BillBoard = ({ getData }) => {
           src={`${IMG_PATH}/${movie.backdrop_path}`}
           alt=""
         />
-        <div className="billboard__bg--backdrop"></div>
       </div>
       <div className="billboard__content">
         <div className="billboard__content--image">
