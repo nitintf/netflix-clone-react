@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import Slider from '../components/Slider/index'
 
 import { IMG_PATH } from "../constants/api"
 
@@ -17,7 +18,7 @@ const List = ({ title, getData, poster }) => {
       if (inView && !executed) {
         executed = true;
         const data = await getData();
-        setMovies(data);
+        setMovies(data.filter(i => i.backdrop_path && i.poster_path));
         setInterval(() => {
           setShow(true);
         }, 1000);
@@ -34,6 +35,7 @@ const List = ({ title, getData, poster }) => {
       {show ? (
         <div className="list__title">{title}</div>
       ) : (
+          <div style={{ marginLeft: '3.43rem' }}>
           <SkeletonTheme color="#222" highlightColor="#333">
           <Skeleton
             count={1}
@@ -41,47 +43,43 @@ const List = ({ title, getData, poster }) => {
             width={100}
             style={{ marginBottom: "1rem" }}
           />
-        </SkeletonTheme>
+            </SkeletonTheme>
+          </div>
       )}
 
-      <div className="list__items">
-        {show ? (
-          movies?.length > 0 ? movies.map((movie, i) => {
-            return i < 10 && movie.backdrop_path && movie.poster_path ? (
-              <Link
-                key={movie.id}
-                to={`/browse/${movie.type}/${movie.id}`}
-                className="list__items--image"
-              >
-                <img
-                  className={`list__items--img ${poster ? "list__items--poster" : "list__items--backdrop"
-                    }`}
-                  src={`${IMG_PATH}/${poster ? movie.poster_path : movie.backdrop_path
-                    }`}
-                  alt={movie.title}
-                />
-              </Link>
-            ) : null;
-          }) : <p className='show-message'>Sorry, We don't have any data for this!</p>
-        ) : (
-            <SkeletonTheme color="#222" highlightColor="#333">
-              {poster ?
-                <Skeleton
-                  count={5}
-                  height={300}
-                  width={230}
-                  style={{ marginRight: "1rem" }}
-                /> :
-                <Skeleton
-                  count={4}
-                  height={150}
-                  width={300}
-                  style={{ marginRight: "1rem" }}
-                />}
+      {show && (
+        movies?.length > 0 ? (
+          <>
+            <Slider poster={poster}>
+              {movies.map(movie => (
+                <Slider.Item movie={movie} key={movie.id} poster={poster}>item</Slider.Item>
+              ))}
+            </Slider>
+          </>
+        ) : <p className='show-message'>Sorry, We don't have any data for this!</p>
+      )
+      }
+
+      {!show && (
+        <div style={{ marginLeft: '3.43rem' }}>
+          <SkeletonTheme color="#222" highlightColor="#333" >
+            {poster ?
+              <Skeleton
+                count={5}
+                height={300}
+                width={230}
+                style={{ marginRight: "1rem" }}
+              /> :
+              <Skeleton
+                count={4}
+                height={150}
+                width={300}
+                style={{ marginRight: "1rem" }}
+              />}
 
           </SkeletonTheme>
-        )}
-      </div>
+        </div>
+      )}
     </div>
   );
 };

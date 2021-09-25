@@ -43,6 +43,7 @@ const SignInForm = () => {
           displayName: username,
         });
 
+
         // Create document for user
         const docResponse = await firebase
           .firestore()
@@ -56,8 +57,7 @@ const SignInForm = () => {
           });
 
         await createUserProfile(docResponse.id, fullName, nanoid(5))
-
-        history.push(ROUTES.PROFILE);
+        // history.push(ROUTES.BROWSE);
       } catch (err) {
         setLoading(false);
         setError(err.message);

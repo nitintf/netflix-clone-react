@@ -15,6 +15,15 @@
 @import './components/season';
 @import './components/episode';
 
+// Slider
+@import './components/Slider/Content';
+@import './components/Slider/Item';
+@import './components/Slider/Mark';
+@import './components/Slider/ShowDetailsButton';
+@import './components/Slider/SlideButton';
+@import './components/Slider/Slider';
+@import './components/Slider/SliderWrapper';
+
 @import './shared/shared';
 
 @import './pages/homepage/homepage';
