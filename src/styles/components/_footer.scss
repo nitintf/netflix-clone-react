@@ -21,7 +21,8 @@
       gap: 7rem;
     }
     @include media('<phone') {
-      gap: 4rem;
+      flex-direction: column;
+      gap: 2rem;
     }
   }
 

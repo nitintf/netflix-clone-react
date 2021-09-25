@@ -7,7 +7,6 @@ import { IoMdInformationCircleOutline } from "react-icons/io";
 import { CgClose } from 'react-icons/cg'
 
 const Content = ({ movie, onClose }) => {
-  console.log(`movie`, movie)
   return (
     <div className="content">
       <div className="content__background">

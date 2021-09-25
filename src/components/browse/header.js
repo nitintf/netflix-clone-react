@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useContext } from "react";
+import { useEffect, useRef, useState, useContext, useCallback } from "react";
 import { NavLink, Link, useHistory } from "react-router-dom";
 import FirebaseContext from "../../context/firebase";
 import { deleteCurrentProfile } from '../../services/firebase'
@@ -10,6 +10,7 @@ import Logo from "../../assets/logo";
 const Header = () => {
   const [profile, setProfile] = useState({});
   const [showTip, setShowTip] = useState(false);
+  const [headerScroll, setHeaderScroll] = useState(false)
   const history = useHistory()
   const ref = useRef()
   const { firebase } = useContext(FirebaseContext)
@@ -41,14 +42,33 @@ const Header = () => {
     };
   }, [ref])
 
+  const handleScroll = () => {
+    if (window.scrollY >= 20) {
+      setHeaderScroll(true)
+    } else {
+      setHeaderScroll(false)
+    }
+  }
+
+
+
+  useEffect(() => {
+    handleScroll()
+    window.addEventListener('scroll', handleScroll)
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  })
+
 
   const handleDeleteProfile = async () => {
     await deleteCurrentProfile(user.docId, profile.profileId)
     history.push(ROUTES.PROFILE);
   }
 
+  const headerBgColor = headerScroll ? '#141414' : 'transparent'
+
   return (
-    <header className="browse__header">
+    <header className="browse__header" style={{ backgroundColor: headerBgColor }}>
       <div className="browse__header--links">
         <NavLink to={ROUTES.BROWSE}>
           <Logo className="browse__header--logo" />

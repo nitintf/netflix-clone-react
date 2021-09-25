@@ -1,12 +1,14 @@
 .homepage {
-  background-color: $color-white;
+  background-color: $color-black;
   &__header {
    
     &--head {
-      padding: 2rem 4rem;
+      padding: 2rem 0;
       display: flex;
       align-items: center;
       justify-content: space-between;
+      width: 80%;
+      margin: 0 auto;
     }
     
     &--logo {
@@ -35,6 +37,9 @@
       gap: 1rem;
       text-align: center;
 
+     
+
+
       &-title {
         width: 40%;
 
@@ -43,7 +48,7 @@
         }
 
         @include media('<phone') {
-          width: 70%;
+          width: 85%;
         }
       }
 
@@ -53,6 +58,12 @@
 
       &-para {
         font-weight: 600;
+
+         @include media('<=phone') {
+          width: 80%;
+          line-height: 1.5;
+          font-weight: 400;        
+        }
       }
 
       &-btn {

@@ -6,6 +6,10 @@
     width: 10rem;
     margin-top: 2rem;
     margin-left: 2rem;
+
+    @include media('<=phone') {
+      width: 8rem;
+    }
   }
   
 }
