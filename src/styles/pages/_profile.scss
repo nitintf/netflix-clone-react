@@ -27,6 +27,12 @@
     color: $color-white;
     text-align: center;
 
+    &--create {
+      @include media('<=phone') {
+        width: 85% !important;
+      }
+    }
+
     @include media ('<=phone') {
       width: 100%;
     }

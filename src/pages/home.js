@@ -1,6 +1,5 @@
 import BillBoard from "../components/browse/billBoard";
 import List from "../components/list";
-import Slider from '../components/Slider/index'
 
 import {
   getTrendingMovies,
@@ -12,10 +11,8 @@ import {
 } from "../services/api";
 
 
-
-
-
 const Home = () => {
+
   return (
     <>
       <BillBoard getData={() => getTrendingMovies(true)} />

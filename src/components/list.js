@@ -12,6 +12,24 @@ const List = ({ title, getData, poster }) => {
   const [show, setShow] = useState(false);
   const { ref, inView } = useInView();
 
+  const [windowWidth, setWindowWidth] = useState()
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth)
+    console.log(`window.innerWidth`, window.innerWidth)
+
+    window.addEventListener('resize', (e) => {
+      setWindowWidth(e.target.innerWidth)
+    })
+
+    return () => {
+
+      window.removeEventListener('resize', (e) => {
+        setWindowWidth(e.target.innerWidth)
+      })
+    }
+  }, [])
+
 
   useEffect(() => {
     const dataRequest = async () => {
@@ -35,12 +53,12 @@ const List = ({ title, getData, poster }) => {
       {show ? (
         <div className="list__title">{title}</div>
       ) : (
-          <div style={{ marginLeft: '3.43rem' }}>
+          <div style={{ marginLeft: `${windowWidth < 500 ? '1.5rem' : '3.43rem'}` }}>
           <SkeletonTheme color="#222" highlightColor="#333">
           <Skeleton
             count={1}
-            height={25}
-            width={100}
+                height={windowWidth < 500 ? 20 : 25}
+                width={windowWidth < 500 ? 70 : 100}
             style={{ marginBottom: "1rem" }}
           />
             </SkeletonTheme>
@@ -61,13 +79,13 @@ const List = ({ title, getData, poster }) => {
       }
 
       {!show && (
-        <div style={{ marginLeft: '3.43rem' }}>
+        <div style={{ marginLeft: `${windowWidth < 500 ? '1.5rem' : '3.43rem'}` }}>
           <SkeletonTheme color="#222" highlightColor="#333" >
-            {poster ?
+            {poster || windowWidth < 500 ?
               <Skeleton
-                count={5}
-                height={300}
-                width={230}
+                count={windowWidth < 500 ? 2 : 5}
+                height={windowWidth < 500 ? 180 : 300}
+                width={windowWidth < 500 ? 150 : 230}
                 style={{ marginRight: "1rem" }}
               /> :
               <Skeleton

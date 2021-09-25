@@ -2,6 +2,11 @@
   position: relative;
   height: 30vw;
   margin-top: -15px;
+  overflow: hidden;
+
+  @include media('<=phone') {
+    height: 40vh;
+  }
 
   &__background,
   &__background__shadow,
@@ -53,20 +58,47 @@
     &__container {
       padding: 90px 3.43rem;
       color: wheat;
+
+      @include media('<=phone') {
+        padding: 40px 1.5rem;
+      }
     }
   }
 
   &__title {
-    font-size: 45px;
+    font-size: 3rem;
     color: #fff;
     font-weight: 700;
+
+    @include media('<=phone') {
+      font-size: 2rem;
+    }
+    
   }
 
   &__description {
-    font-size: 18px;
+    font-size: 1.1rem;
     color: $color-white;
     margin-top: 20px;
     max-width: 500px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 123px;
+    line-height: 25px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+    -ms-box-orient: vertical;
+    box-orient: vertical;
+    -webkit-line-clamp: 5;
+    -moz-line-clamp: 5;
+    -ms-line-clamp: 5;
+    line-clamp: 5;
+   
+    @include media('<=phone') {
+      max-height: 40px;
+      line-height: 20px;
+    }
   }
 
   &__actions {
@@ -84,10 +116,20 @@
     top: 30px;
     right: 30px;
 
+     @include media('<=phone'){
+       top: 20px;
+       right: 20px;
+     }
+
     svg {
       width: 40px;
       height: 40px;
       cursor: pointer;
+
+      @include media('<=phone') {
+        width: 30px;
+        height: 30px;
+      }
     }
   }
 }

@@ -14,7 +14,7 @@ const Content = ({ movie, onClose }) => {
         <div
           className="content__background__image"
           style={{
-            'background-image': `url(${IMG_PATH}/${movie.backdrop_path})`
+            backgroundImage: `url(${IMG_PATH}/${movie.backdrop_path})`
           }}
         />
       </div>

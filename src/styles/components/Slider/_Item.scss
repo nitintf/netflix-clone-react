@@ -5,6 +5,10 @@
   position: relative;
   cursor: pointer;
 
+   @include media('<=phone') {
+      flex: 0 0 40%;
+   }
+
   img {
     height: 100%;
     width: 100%;

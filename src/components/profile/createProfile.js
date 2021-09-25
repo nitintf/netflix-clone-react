@@ -37,7 +37,7 @@ const CreateProfile = ({ setCreateProfile }) => {
     }
   };
   return (
-    <section className="profile__container text-align-left">
+    <section className="profile__container profile__container--create text-align-left">
       <h1 className="profile__container--heading ">Add Profile</h1>
       <p className="profile__container--subheading">
         Add a profile for another person watching Netflix.

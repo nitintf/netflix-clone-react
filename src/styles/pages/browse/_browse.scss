@@ -2,6 +2,7 @@
   position: relative;
   min-width: 100vw;
   width: 100%;
+  background-color: #141414;
 
   &__header {
     position: fixed;
@@ -16,12 +17,16 @@
     justify-content: space-between;
     padding: 0 3rem;
     transition: all .3s ease-in-out;
+
+    @include media('<=phone') {
+      padding: 0 1.5rem;
+    }
     
     &--links {
       display: flex;
       align-items: center;
       gap: 2rem;
-      color: $color-white
+      color: $color-white;
     }
   
     &--logo {
@@ -32,6 +37,10 @@
     &--list {
       display: flex;
       gap: 1.2rem;
+
+      @include media('<=phone') {
+        display: none;
+      }
     }
 
     &--item {

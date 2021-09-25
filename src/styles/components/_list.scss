@@ -11,5 +11,9 @@
     color: $color-white;
     font-size: 1.3rem;
     font-weight: 600;
+
+     @include media('<=phone') {
+        padding-left: 1.5rem;
+      }
   }
 }
