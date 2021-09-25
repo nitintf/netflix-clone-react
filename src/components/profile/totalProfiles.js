@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { IoMdAddCircle } from "react-icons/io";
@@ -10,6 +11,24 @@ const TotalProfiles = ({ profiles, loading, setCreateProfile }) => {
       localStorage.removeItem("userProfile");
     }
   };
+
+  const [windowWidth, setWindowWidth] = useState()
+
+  useEffect(() => {
+    setWindowWidth(window.innerWidth)
+    console.log(`window.innerWidth`, window.innerWidth)
+
+    window.addEventListener('resize', (e) => {
+      setWindowWidth(e.target.innerWidth)
+    })
+
+    return () => {
+
+      window.removeEventListener('resize', (e) => {
+        setWindowWidth(e.target.innerWidth)
+      })
+    }
+  }, [])
 
   return (
     <section className="profile__container">
@@ -55,9 +74,9 @@ const TotalProfiles = ({ profiles, loading, setCreateProfile }) => {
       ) : (
         <SkeletonTheme color="#222" highlightColor="#333">
           <Skeleton
-            count={3}
-            height={150}
-            width={150}
+              count={windowWidth < 400 ? 2 : 3}
+              height={windowWidth < 400 ? 100 : 150}
+              width={windowWidth < 400 ? 100 : 150}
             style={{ marginRight: "1rem" }}
           />
         </SkeletonTheme>
