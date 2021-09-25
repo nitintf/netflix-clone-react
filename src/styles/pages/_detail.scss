@@ -11,12 +11,22 @@
     position: relative;
     background-color: #141414;
 
+    @include media('<=phone') {
+      min-height: 70vh;
+      max-height: 70vh;
+    }
+
     &--detail {
       position: absolute;
       top: 200px;
       left: 3.5%;
       width: 70%;
       color: $color-white;
+
+      @include media('<=phone') {
+        width: 90%;
+      }
+
 
       &-title {
         font-size: 4rem;
@@ -53,6 +63,12 @@
         max-height: 75vh;
         object-fit: cover;
         filter: opacity(30%);
+
+        @include media('<=phone') {
+          min-height: 70vh;
+          max-height: 70vh;
+        }
+
       }
 
     }
@@ -70,9 +86,17 @@
     color: $color-white;
     position: relative;
 
+    @include media('<=phone') {
+       flex-direction: column;
+       gap: 2rem;
+    }
 
     &--left {
       width: 60%;
+
+      @include media('<=phone') {
+        width: 100%;
+      }
     }
     &--right {
       width: 30%;
@@ -81,6 +105,13 @@
       flex-direction: column;
       gap: 8px;
       line-height: 1.5;
+
+      @include media('<=phone') {
+        width: 100%;
+        flex-direction: row;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
 
       &-key {
         font-size: 13px;
