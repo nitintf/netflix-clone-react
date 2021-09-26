@@ -7,7 +7,6 @@ import "./styles/index.scss";
 import FirebaseContext from "./context/firebase";
 import ScrollToTop from "./helpers/scroll-to-top";
 import { firebase, FieldValue } from "./lib/firebase";
-require('dotenv').config()
 
 ReactDOM.render(
   <Router>
