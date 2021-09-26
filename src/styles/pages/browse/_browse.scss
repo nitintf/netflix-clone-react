@@ -3,6 +3,7 @@
   min-width: 100vw;
   width: 100%;
   background-color: #141414;
+  // background-color: rgba(0, 0, 0, 0.788);
 
   &__header {
     position: fixed;
@@ -19,7 +20,9 @@
     transition: all .3s ease-in-out;
 
     @include media('<=phone') {
-      padding: 0 1.5rem;
+      padding: 1.5rem 1.5rem;
+      padding-bottom: 7rem;
+      align-items: flex-start;
     }
     
     &--links {
@@ -27,6 +30,11 @@
       align-items: center;
       gap: 2rem;
       color: $color-white;
+
+      @include media('<=phone') {
+        flex-direction: column;
+        align-items: flex-start;
+      }
     }
   
     &--logo {
@@ -38,8 +46,11 @@
       display: flex;
       gap: 1.2rem;
 
-      @include media('<=phone') {
-        display: none;
+      @include media('<=phone'){
+        position: absolute;
+        left: 4.5rem;
+        gap: 2rem;
+        top: 6rem;
       }
     }
 

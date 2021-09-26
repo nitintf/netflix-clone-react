@@ -65,7 +65,7 @@ const Header = () => {
     history.push(ROUTES.PROFILE);
   }
 
-  const headerBgColor = headerScroll ? '#141414' : 'transparent'
+  const headerBgColor = headerScroll ? 'rgba(0, 0, 0, 0.899)' : 'transparent'
 
   return (
     <header className="browse__header" style={{ backgroundColor: headerBgColor }}>

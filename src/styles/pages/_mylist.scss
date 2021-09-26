@@ -5,6 +5,10 @@
   position: relative;
   padding: 8rem 3rem;
   color: $color-white;
+
+  @include media('<=phone'){
+    padding-top: 11rem;
+  }
   
 
   &__heading {
