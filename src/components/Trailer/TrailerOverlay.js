@@ -11,8 +11,8 @@ const TrailerOverlay = () => {
   const { windowWidth } = useWindowWidth()
 
   const playerSize = {
-    width: windowWidth < 500 ? '350' : '600',
-    height: windowWidth < 500 ? '400' : '1000',
+    width: windowWidth < 500 ? '350' : '1000',
+    height: windowWidth < 500 ? '400' : '600',
   }
 
   const opts = {
