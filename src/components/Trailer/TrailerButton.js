@@ -3,10 +3,12 @@ import { BsFillPlayFill } from "react-icons/bs";
 import movieTrailer from 'movie-trailer'
 
 import { TrailerVideoContext } from '../../context/Trailer'
+import { MessageContext } from '../../context/Message';
 
 const TrailerButton = ({ id }) => {
 
   const { setError, setShowTrailer, setTrailerVideo } = useContext(TrailerVideoContext)
+  const { setMessage, setMessageType, setShowMessage } = useContext(MessageContext)
 
   const handleTrailerVideo = async () => {
     await movieTrailer(null, {
@@ -18,6 +20,9 @@ const TrailerButton = ({ id }) => {
       if (respose === null) {
         setShowTrailer(false)
         setError(true)
+        setMessage('Sorry, there is no Trailer for this')
+        setMessageType('ALERT')
+        setShowMessage(true)
       } else {
         setTrailerVideo(respose)
         setShowTrailer(true)

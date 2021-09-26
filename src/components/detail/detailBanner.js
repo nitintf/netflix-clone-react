@@ -3,6 +3,7 @@ import { useEffect, useState, useContext } from "react";
 import { IMG_PATH } from "../../constants/api";
 import useUser from "../../hooks/use-user";
 import { MyListContext } from "../../context/myList";
+import { MessageContext } from "../../context/Message";
 import { addToCurrentProfile, removeFromCurrentProfile } from "../../services/firebase";
 import TrailerButton from "../Trailer/TrailerButton";
 
@@ -11,6 +12,7 @@ const DetailBanner = ({ data, type }) => {
   const [add, setAdd] = useState(false)
   const { user } = useUser()
   const { myList, setMyList } = useContext(MyListContext)
+  const { setMessage, setMessageType, setShowMessage } = useContext(MessageContext)
 
   useEffect(() => {
     setProfile(JSON.parse(localStorage.getItem('userProfile')))
@@ -27,15 +29,25 @@ const DetailBanner = ({ data, type }) => {
       const newMyList = myList.filter(item => {
         return item.id !== data.id
       })
+      setMessage('Removed from My List')
+      setMessageType('ALERT')
+      setShowMessage(true)
+
       setMyList(newMyList)
       await removeFromCurrentProfile(user.docId, profile.profileId, {
         ...data, type
       })
+
     } else {
+      setMessage('Added to My List')
+      setMessageType('SUCCESS')
+      setShowMessage(true)
+
       setMyList((prev) => [...prev, { ...data, type }])
       await addToCurrentProfile(user.docId, profile.profileId, {
         ...data, type
       })
+
     }
   }
 

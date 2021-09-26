@@ -9,6 +9,7 @@ import MyListProvider from './context/myList'
 import PrivateRoute from "./helpers/private-route";
 import IsUserLoggedIn from "./helpers/is-user-logged-in";
 import TrailerProvider from "./context/Trailer";
+import MessageProvider from './context/Message'
 
 const Homepage = lazy(() => import("./pages/homepage"));
 const Login = lazy(() => import("./pages/login"));
@@ -31,11 +32,13 @@ function App() {
         <UserContext.Provider value={{ user }}>
           <MyListProvider>
             <TrailerProvider>
-              <IsUserLoggedIn path={ROUTES.HOMEPAGE} component={Homepage} exact />
-              <IsUserLoggedIn path={ROUTES.LOGIN} component={Login} />
-              <IsUserLoggedIn path={ROUTES.SIGN_IN} component={SignIn} />
-              <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
-              <PrivateRoute path={ROUTES.BROWSE} component={Browse} />
+              <MessageProvider>
+                <IsUserLoggedIn path={ROUTES.HOMEPAGE} component={Homepage} exact />
+                <IsUserLoggedIn path={ROUTES.LOGIN} component={Login} />
+                <IsUserLoggedIn path={ROUTES.SIGN_IN} component={SignIn} />
+                <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
+                <PrivateRoute path={ROUTES.BROWSE} component={Browse} />
+              </MessageProvider>
             </TrailerProvider>
           </MyListProvider>
         </UserContext.Provider>

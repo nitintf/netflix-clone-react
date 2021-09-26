@@ -8,7 +8,9 @@ import { getCurrentProfile } from "../services/firebase"
 import useUser from "../hooks/use-user"
 import { MyListContext } from "../context/myList";
 import { TrailerVideoContext } from "../context/Trailer";
+import { MessageContext } from "../context/Message";
 import TrailerOverlay from "../components/Trailer/TrailerOverlay";
+import Message from "../components/Message";
 
 const Home = lazy(() => import("./home"));
 const Movies = lazy(() => import("./movies"));
@@ -21,6 +23,7 @@ const Browse = () => {
   const { user } = useUser()
   const { setMyList } = useContext(MyListContext)
   const { showTrailer } = useContext(TrailerVideoContext)
+  const { showMessage } = useContext(MessageContext)
 
   useEffect(() => {
     const profile = JSON.parse(localStorage.getItem('userProfile'))
@@ -65,6 +68,7 @@ const Browse = () => {
         </Suspense>
       </main>
       <Footer bgColor="#141414" />
+      <Message />
     </>
   );
 };

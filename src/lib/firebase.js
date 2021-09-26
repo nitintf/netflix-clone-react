@@ -2,9 +2,6 @@ import firebase from "firebase";
 import "firebase/auth";
 import "firebase/firestore";
 
-
-
-
 const config = {
   apiKey: "AIzaSyAq02YvsCajlyZpX6FwNNFKB8sNw2QVeNI",
   authDomain: "react-netflix-b15af.firebaseapp.com",
