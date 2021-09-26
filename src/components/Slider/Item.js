@@ -1,30 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import cx from 'classnames'
 import SliderContext from '../../context/Slider'
 import ShowDetailsButton from './ShowDetailsButton'
 import Mark from './Mark'
 
 import { IMG_PATH } from '../../constants/api'
+import useWindowWidth from '../../hooks/useWindowWidth';
 
 const Item = ({ movie, poster }) => {
 
-  const [windowWidth, setWindowWidth] = useState()
-
-  useEffect(() => {
-    setWindowWidth(window.innerWidth)
-    console.log(`window.innerWidth`, window.innerWidth)
-
-    window.addEventListener('resize', (e) => {
-      setWindowWidth(e.target.innerWidth)
-    })
-
-    return () => {
-
-      window.removeEventListener('resize', (e) => {
-        setWindowWidth(e.target.innerWidth)
-      })
-    }
-  }, [])
+  const { windowWidth } = useWindowWidth()
 
   return (
   <SliderContext.Consumer>

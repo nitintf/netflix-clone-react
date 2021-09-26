@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import { useInView } from "react-intersection-observer";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import Slider from '../components/Slider/index'
 
-import { IMG_PATH } from "../constants/api"
+import useWindowWidth from "../hooks/useWindowWidth";
 
 const List = ({ title, getData, poster }) => {
   let executed = false
@@ -12,24 +11,7 @@ const List = ({ title, getData, poster }) => {
   const [show, setShow] = useState(false);
   const { ref, inView } = useInView();
 
-  const [windowWidth, setWindowWidth] = useState()
-
-  useEffect(() => {
-    setWindowWidth(window.innerWidth)
-    console.log(`window.innerWidth`, window.innerWidth)
-
-    window.addEventListener('resize', (e) => {
-      setWindowWidth(e.target.innerWidth)
-    })
-
-    return () => {
-
-      window.removeEventListener('resize', (e) => {
-        setWindowWidth(e.target.innerWidth)
-      })
-    }
-  }, [])
-
+  const { windowWidth } = useWindowWidth()
 
   useEffect(() => {
     const dataRequest = async () => {

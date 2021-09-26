@@ -1,7 +1,8 @@
-import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { IoMdAddCircle } from "react-icons/io";
+
+import useWindowWidth from "../../hooks/useWindowWidth";
 
 const TotalProfiles = ({ profiles, loading, setCreateProfile }) => {
   const handleStoreProfileId = (profile) => {
@@ -12,23 +13,7 @@ const TotalProfiles = ({ profiles, loading, setCreateProfile }) => {
     }
   };
 
-  const [windowWidth, setWindowWidth] = useState()
-
-  useEffect(() => {
-    setWindowWidth(window.innerWidth)
-    console.log(`window.innerWidth`, window.innerWidth)
-
-    window.addEventListener('resize', (e) => {
-      setWindowWidth(e.target.innerWidth)
-    })
-
-    return () => {
-
-      window.removeEventListener('resize', (e) => {
-        setWindowWidth(e.target.innerWidth)
-      })
-    }
-  }, [])
+  const { windowWidth } = useWindowWidth()
 
   return (
     <section className="profile__container">

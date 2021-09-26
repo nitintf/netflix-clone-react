@@ -6,6 +6,7 @@ import { SkeletonTheme } from "react-loading-skeleton"
 import { getCurrentProfile } from "../services/firebase"
 import useUser from "../hooks/use-user"
 import { IMG_PATH } from "../constants/api"
+import useWindowWidth from "../hooks/useWindowWidth"
 
 const MyList = () => {
   const [data, setData] = useState(null);
@@ -20,6 +21,8 @@ const MyList = () => {
 
     getProfile()
   }, [user.docId])
+
+  const { windowWidth } = useWindowWidth()
 
   return (
     <section className='mylist'>
@@ -44,9 +47,9 @@ const MyList = () => {
           }
           )) : <p className='show-message'>Add Some Movies and Tv Shows to see them here</p>) : <SkeletonTheme color="#222" highlightColor="#333">
             <Skeleton
-                count={5}
-                height={300}
-                width={230}
+                count={windowWidth < 500 ? 2 : 5}
+                height={windowWidth < 500 ? 150 : 300}
+                width={windowWidth < 500 ? 120 : 230}
                 style={{ marginRight: "1rem", marginTop: '1rem' }}
               />
           </SkeletonTheme>}

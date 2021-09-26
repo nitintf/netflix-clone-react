@@ -6,6 +6,7 @@
 
   @include media('<=phone') {
     height: 40vh;
+    margin-top: -25px;
   }
 
   &__background,
