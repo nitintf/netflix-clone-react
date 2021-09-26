@@ -11,6 +11,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @include media('<=phone'){
+      padding: 10rem 1rem;
+    }
     
 
     .search__result {
@@ -33,6 +37,12 @@
       padding: 1rem 1.5rem;
       border-radius: 5px;
 
+      @include media('<=phone') {
+        width: 100%;
+        display: flex;
+        align-items: center;
+      }
+
       &--field {
         width: 90%;
         background-color: transparent;
@@ -42,6 +52,11 @@
         color: $color-white;
         margin-left: 15px;
         font-family: inherit;
+
+        @include media('<=phone') {
+          font-size: 1.5rem;
+          margin-left: 10px;
+        }
 
       }
 
@@ -65,6 +80,10 @@
   display: flex;
   position: relative;
 
+  @include media('<=phone'){
+    padding: 0;
+  }
+
   h2 {
     width: 50%;
     text-align: center;
@@ -80,5 +99,9 @@
     height: 3px;
     background-color: $color-main;
     transition: transform .6s cubic-bezier(0.215, 0.610, 0.355, 1);
+
+    @include media('<=phone'){
+      width: 50%;
+    }
   }
 }

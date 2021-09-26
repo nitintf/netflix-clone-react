@@ -5,11 +5,19 @@
   padding-top: 4rem;
   margin: 0 auto;
   margin-bottom: 2rem;
+
+  @include media('<=phone'){
+    width: 90%;
+  }
   
   &__head{
     display: flex;
     align-items: flex-end;
     justify-content: space-between;
+
+  @include media('<=phone'){
+    align-items: center;
+  }
 
     &--title {
       font-size: 1.7rem;
@@ -53,6 +61,10 @@
     width: max-content;
     height: min-content;
     cursor: pointer;
+
+    @include media('<=phone') {
+      top: 4rem;
+    }
 
     &--value {
       padding: 14px 1.375rem;

@@ -7,16 +7,26 @@
   padding: 1.4rem 2rem;
   background-color: #333;
   border-radius: 10px;
+  
+  @include media('<=phone'){
+    padding: 1rem;
+    gap: 5px;
+  }
 
   &__number {
     font-weight: 800;
     font-size: 1.4rem;
+    @include media('<=phone'){
+      display: none;
+    }
   }
 
   &__content {
     display: flex;
     gap: 1rem;
     align-items: center;
+    @include media('<=phone'){
+    }
   }
 
   &__img {
@@ -24,6 +34,10 @@
     &--src{
       width: 12rem;
       border-radius: 4px;
+      
+      @include media('<=phone'){
+        width: 8rem;
+      }
     }
   }
 
@@ -38,7 +52,7 @@
     }
 
     &--small {
-      font-size: 13px;
+      font-size: .9rem;
       display: flex;
       gap: 1rem;
       font-weight: 500;
@@ -56,7 +70,7 @@
     &--about {
       line-height: 1.2;
       font-weight: 400;
-      font-size: 15px;
+      font-size: 1rem;
       color: #d2d2d2;
       word-spacing: 1px;
       overflow: hidden;
@@ -70,6 +84,13 @@
       -moz-line-clamp: 5;
       -ms-line-clamp: 5;
       line-clamp: 5;
+
+      @include media('<=phone'){
+        -webkit-line-clamp: 4;
+      -moz-line-clamp: 4;
+      -ms-line-clamp: 4;
+      line-clamp: 4;
+      }
     }
   }
 }
