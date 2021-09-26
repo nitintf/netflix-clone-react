@@ -3,7 +3,6 @@ import { Link } from "react-router-dom"
 
 import { getSearch } from "../services/api"
 import { IMG_PATH } from "../constants/api"
-import Slider from '../components/Slider/index'
 
 const Search = () => {
   const [input, setInput] = useState('')

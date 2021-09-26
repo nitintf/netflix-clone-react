@@ -15,6 +15,7 @@ const Home = () => {
 
   return (
     <>
+
       <BillBoard getData={() => getTrendingMovies(true)} />
       <div className="browse__home">
         <List title="Trending Now" getData={getTrendingMovies} />
@@ -28,6 +29,7 @@ const Home = () => {
           poster={true}
         />
       </div>
+
     </>
   );
 };

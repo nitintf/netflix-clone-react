@@ -10,6 +10,7 @@
     "firebase": "^8.9.0",
     "include-media": "^1.4.10",
     "lodash": "^4.17.21",
+    "movie-trailer": "^2.1.0",
     "nanoid": "^3.1.24",
     "node-sass": "^6.0.1",
     "react": "^17.0.2",
@@ -19,6 +20,7 @@
     "react-loading-skeleton": "^2.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-youtube": "^7.13.1",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

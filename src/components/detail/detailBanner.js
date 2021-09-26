@@ -1,10 +1,10 @@
 import { useEffect, useState, useContext } from "react";
-import { BsFillPlayFill } from "react-icons/bs";
 
 import { IMG_PATH } from "../../constants/api";
 import useUser from "../../hooks/use-user";
 import { MyListContext } from "../../context/myList";
 import { addToCurrentProfile, removeFromCurrentProfile } from "../../services/firebase";
+import TrailerButton from "../Trailer/TrailerButton";
 
 const DetailBanner = ({ data, type }) => {
   const [profile, setProfile] = useState(null)
@@ -54,10 +54,7 @@ const DetailBanner = ({ data, type }) => {
             {data.title || data.name || data.original_title}
           </h1>
           <div className="info__banner--detail-actions">
-            <button className="btn btn--trailer">
-              <BsFillPlayFill className="btn--icon" />
-              Trailer
-            </button>
+            <TrailerButton id={data.id} />
             <button className="btn__round" onClick={handleSubmition}>
               {!add ?
                 <svg viewBox="0 0 24 24">

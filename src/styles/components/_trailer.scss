@@ -1,0 +1,29 @@
+.trailer {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.897);
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10000000;
+
+  &__close {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    cursor: pointer;
+
+    svg {
+      width: 40px;
+      height: 40px;
+      color: #fff;
+    }
+  }
+
+  &__video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

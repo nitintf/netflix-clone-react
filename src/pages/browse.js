@@ -7,6 +7,8 @@ import Footer from "../components/footer";
 import { getCurrentProfile } from "../services/firebase"
 import useUser from "../hooks/use-user"
 import { MyListContext } from "../context/myList";
+import { TrailerVideoContext } from "../context/Trailer";
+import TrailerOverlay from "../components/Trailer/TrailerOverlay";
 
 const Home = lazy(() => import("./home"));
 const Movies = lazy(() => import("./movies"));
@@ -18,7 +20,7 @@ const Search = lazy(() => import('./search'))
 const Browse = () => {
   const { user } = useUser()
   const { setMyList } = useContext(MyListContext)
-
+  const { showTrailer } = useContext(TrailerVideoContext)
 
   useEffect(() => {
     const profile = JSON.parse(localStorage.getItem('userProfile'))
@@ -34,6 +36,11 @@ const Browse = () => {
 
   return (
     <>
+      {
+        showTrailer && (
+          <TrailerOverlay />
+        )
+      }
       <main className="browse">
         <Header />
         <Suspense

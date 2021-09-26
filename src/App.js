@@ -8,6 +8,7 @@ import useAuthListener from "./hooks/use-authlistener";
 import MyListProvider from './context/myList'
 import PrivateRoute from "./helpers/private-route";
 import IsUserLoggedIn from "./helpers/is-user-logged-in";
+import TrailerProvider from "./context/Trailer";
 
 const Homepage = lazy(() => import("./pages/homepage"));
 const Login = lazy(() => import("./pages/login"));
@@ -29,11 +30,13 @@ function App() {
       <Switch>
         <UserContext.Provider value={{ user }}>
           <MyListProvider>
-            <IsUserLoggedIn path={ROUTES.HOMEPAGE} component={Homepage} exact />
-            <IsUserLoggedIn path={ROUTES.LOGIN} component={Login} />
-            <IsUserLoggedIn path={ROUTES.SIGN_IN} component={SignIn} />
-            <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
-            <PrivateRoute path={ROUTES.BROWSE} component={Browse} />
+            <TrailerProvider>
+              <IsUserLoggedIn path={ROUTES.HOMEPAGE} component={Homepage} exact />
+              <IsUserLoggedIn path={ROUTES.LOGIN} component={Login} />
+              <IsUserLoggedIn path={ROUTES.SIGN_IN} component={SignIn} />
+              <PrivateRoute path={ROUTES.PROFILE} component={Profile} />
+              <PrivateRoute path={ROUTES.BROWSE} component={Browse} />
+            </TrailerProvider>
           </MyListProvider>
         </UserContext.Provider>
       </Switch>

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, useContext, useCallback } from "react";
+import { useEffect, useRef, useState, useContext } from "react";
 import { NavLink, Link, useHistory } from "react-router-dom";
 import FirebaseContext from "../../context/firebase";
 import { deleteCurrentProfile } from '../../services/firebase'

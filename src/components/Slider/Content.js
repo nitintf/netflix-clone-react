@@ -2,9 +2,9 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { IMG_PATH } from '../../constants/api';
-import { BsFillPlayFill } from "react-icons/bs";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import { CgClose } from 'react-icons/cg'
+import TrailerButton from '../Trailer/TrailerButton';
 
 const Content = ({ movie, onClose }) => {
   return (
@@ -25,10 +25,7 @@ const Content = ({ movie, onClose }) => {
             {movie.overview}
           </div>
           <div className='content__actions'>
-            <button className="btn btn--trailer">
-              <BsFillPlayFill className="btn--icon" />
-              Trailer
-            </button>
+            <TrailerButton id={movie.id} />
             <Link
               to={`/browse/${movie.type}/${movie.id}`}
               className="btn btn--info"

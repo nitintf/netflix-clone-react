@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 import { IMG_PATH } from "../../constants/api";
 
 const Episode = ({ data, id }) => {

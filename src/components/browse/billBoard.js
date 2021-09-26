@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
-import { BsFillPlayFill } from "react-icons/bs";
 import { IoMdInformationCircleOutline } from "react-icons/io";
 import { Link } from "react-router-dom";
 
 import { IMG_PATH } from "../../constants/api";
+import TrailerButton from "../Trailer/TrailerButton";
 
 const BillBoard = ({ getData }) => {
   const [movie, setMovie] = useState({});
@@ -11,6 +11,7 @@ const BillBoard = ({ getData }) => {
   useEffect(() => {
     const getMovie = async () => {
       const movieData = await getData();
+      console.log(`movieData`, movieData)
       setMovie(movieData);
     };
 
@@ -50,10 +51,7 @@ const BillBoard = ({ getData }) => {
             <span>{movie.overview}</span>
           </div>
           <div className="billboard__content--actions">
-            <button className="btn btn--trailer">
-              <BsFillPlayFill className="btn--icon" />
-              Trailer
-            </button>
+            <TrailerButton id={movie.id} />
             <Link
               to={`/browse/${movie.type}/${movie.id}`}
               className="btn btn--info"
