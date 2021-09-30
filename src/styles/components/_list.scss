@@ -22,7 +22,8 @@
     max-height: 100%;
     display: flex;
     justify-content: start;
-    gap: 5px;
+    flex-wrap: wrap;
+    gap: 10px;
     z-index: 10;
 
     &--img {

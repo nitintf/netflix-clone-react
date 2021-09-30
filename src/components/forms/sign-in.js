@@ -57,7 +57,7 @@ const SignInForm = () => {
           });
 
         await createUserProfile(docResponse.id, fullName, nanoid(5))
-        // history.push(ROUTES.BROWSE);
+        history.push(ROUTES.PROFILE);
       } catch (err) {
         setLoading(false);
         setError(err.message);

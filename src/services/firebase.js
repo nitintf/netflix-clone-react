@@ -10,6 +10,7 @@ export const doesUsernameExists = async (username) => {
   return response.docs.length > 0;
 };
 
+
 export const getUserProfiles = async (docId) => {
   const response = await firebase
     .firestore()

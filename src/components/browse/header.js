@@ -16,6 +16,12 @@ const Header = () => {
   const { firebase } = useContext(FirebaseContext)
   const { user } = useUser()
 
+  const handleLogout = async () => {
+    await firebase.auth().signOut()
+    localStorage.removeItem('userProfile')
+    history.push(ROUTES.LOGIN);
+  }
+
 
   useEffect(() => {
     if (localStorage.getItem("userProfile")) {
@@ -129,11 +135,7 @@ const Header = () => {
                 Delete Profile
               </div>
               <div
-                to={ROUTES.LOGIN}
-                onClick={() => {
-                  firebase.auth().signOut();
-                  history.push(ROUTES.LOGIN);
-                }}
+                onClick={handleLogout}
                 className='browse__header--actions-tip-item'
               >
                 Logout

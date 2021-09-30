@@ -1,5 +1,5 @@
 .mylist {
-  width: 100%;
+  max-width: 100vw;
   min-height: 40rem;
   background-color: #141414;
   position: relative;
@@ -7,9 +7,8 @@
   color: $color-white;
 
   @include media('<=phone'){
-    padding-top: 11rem;
+    padding: 11rem 1rem;
   }
-  
 
   &__heading {
     border-left: 3px solid red;

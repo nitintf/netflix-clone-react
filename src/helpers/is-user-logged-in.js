@@ -5,7 +5,7 @@ const IsUserLoggedIn = ({ component: Component, ...props }) => {
     <Route
       {...props}
       render={innerProps =>
-        !localStorage.getItem("authUser") ? (
+        (!localStorage.getItem("authUser") || !localStorage.getItem("userProfile")) ? (
           <Component {...innerProps} />
         ) : (
           <Redirect
