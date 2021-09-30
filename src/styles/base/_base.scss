@@ -25,6 +25,7 @@ body {
   height: 100%;
   font-family: $font-family, sans-serif;
   overflow-x: hidden;
+  user-select: none;
 }
 
 a {
